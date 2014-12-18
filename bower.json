@@ -1,0 +1,23 @@
+{
+  "name": "MProgress.js",
+  "version": "1.0.0",
+  "description": "Modal Progress Bar!",
+  "main": "mprogress.js",
+  "keywords": [
+    "javascript",
+    "progress",
+    "modal"
+  ],
+  "authors": [
+    "emalherbi"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/emalherbi/mprogress",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
