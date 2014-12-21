@@ -18,21 +18,19 @@
 
   MProgress.name     = 'modal-mprogress';
   MProgress.version  = '0.1.0';
-
   MProgress.handle   = null;
+  MProgress.valuemin = 0;
+  MProgress.valuemax = 100;
 
   var Settings = MProgress.settings = {
     title : 'MProgress ...',
 
     progress : 0,
 
-    ariavaluemin : 0,
-    ariavaluemax : 100,
-
     milliseconds : 1000,
     secondstimeout : 30,
   };
-  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="5" aria-valuemin="' + MProgress.settings.ariavaluemin + '" aria-valuemax="' + MProgress.settings.ariavaluemax + '" style="width: 5%"> 5%</div></div></div></div></div></div>';
+  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="5" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: 5%"> 5%</div></div></div></div></div></div>';
 
   /**
    * Updates configuration.
@@ -102,7 +100,7 @@
   MProgress.hide = function() {
     // update the MProgress process
     var i, len;
-    for (i=MProgress.settings.progress, len=MProgress.settings.ariavaluemax; i<=len; i++) {
+    for (i=MProgress.settings.progress, len=MProgress.valuemax; i<=len; i++) {
       $('#' + MProgress.name + ' .progress-bar').html(i + '%');
       $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', i);
       $('#' + MProgress.name + ' .progress-bar').css('width', i + '%');
@@ -152,7 +150,7 @@
     MProgress.handle = window.setInterval(function() {
       MProgress.settings.progress += Number( 5 );
 
-      if ( MProgress.settings.progress < MProgress.settings.ariavaluemax ) {
+      if ( MProgress.settings.progress < MProgress.valuemax ) {
         $('#' + MProgress.name + ' .progress-bar').html(MProgress.settings.progress + '%');
         $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.settings.progresss);
         $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.settings.progress + '%');
