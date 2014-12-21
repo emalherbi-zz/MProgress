@@ -24,10 +24,7 @@
 
   var Settings = MProgress.settings = {
     title : 'MProgress ...',
-
     progress : 0,
-
-    milliseconds : 1000,
     secondstimeout : 30,
   };
   MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="5" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: 5%"> 5%</div></div></div></div></div></div>';
@@ -161,7 +158,7 @@
       }
 
       i++; // console.log( i );
-    }, MProgress.settings.milliseconds);
+    }, 1000);
   };
 
   /**
