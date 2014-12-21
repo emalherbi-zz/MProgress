@@ -14,13 +14,15 @@
   MProgress.name     = 'modal-mprogress';
   MProgress.version  = '0.1.0';
   MProgress.handle   = null;
+  MProgress.progress = 0;
   MProgress.valuemin = 0;
   MProgress.valuemax = 100;
 
   var Settings = MProgress.settings = {
     title : 'MProgress ...',
-    progress : 0,
-    secondstimeout : 30,
+    progressValue : 5,
+    seconds : 1,
+    secondsTimeout : 30,
   };
   MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="5" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: 5%"> 5%</div></div></div></div></div></div>';
 
@@ -92,12 +94,12 @@
   MProgress.hide = function() {
     // update the MProgress process
     var i, len;
-    for (i=MProgress.settings.progress, len=MProgress.valuemax; i<=len; i++) {
+    for (i=MProgress.progress, len=MProgress.valuemax; i<=len; i++) {
       $('#' + MProgress.name + ' .progress-bar').html(i + '%');
       $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', i);
       $('#' + MProgress.name + ' .progress-bar').css('width', i + '%');
     }
-    MProgress.settings.progress = i;
+    MProgress.progress = i;
 
     window.setTimeout(function() {
       // reset the MProgress
@@ -138,22 +140,22 @@
     $('#' + MProgress.name).off('EVENT_MPROGRESS_DONE');
 
     MProgress.create();
-    MProgress.settings.progress = Number( 0 );
+    MProgress.progress = Number( MProgress.settings.progressValue );
     MProgress.handle = window.setInterval(function() {
-      MProgress.settings.progress += Number( 5 );
+      MProgress.progress += Number( MProgress.settings.progressValue );
 
-      if ( MProgress.settings.progress < MProgress.valuemax ) {
-        $('#' + MProgress.name + ' .progress-bar').html(MProgress.settings.progress + '%');
-        $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.settings.progresss);
-        $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.settings.progress + '%');
+      if ( MProgress.progress < MProgress.valuemax ) {
+        $('#' + MProgress.name + ' .progress-bar').html(MProgress.progress + '%');
+        $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.progresss);
+        $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.progress + '%');
       }
 
-      if ( i > MProgress.settings.secondstimeout ) {
+      if ( i > (MProgress.settings.secondsTimeout / MProgress.settings.seconds) ) {
         MProgress.done();
       }
 
       i++; // console.log( i );
-    }, 1000);
+    }, (MProgress.settings.seconds * 1000) );
   };
 
   /**
