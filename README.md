@@ -3,14 +3,15 @@ MProgress
 
 Modal Progress Bar.
 
+<img height="150" src="http://bower.io/img/bower-logo.png">
+
 
 Installation
 ------------
 
-Add [mprogress.css] and [mprogress.js] to your project.
+Add [mprogress.js] to your project.
 
 ```html
-<link rel='stylesheet' href='mprogress.css' />
 <script src='mprogress.js' ></script>
 ```
 
