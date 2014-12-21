@@ -44,7 +44,7 @@ Support
 -------
 
 __Bugs and requests__: submit them through the project's issues tracker.<br>
-[![Issues](http://img.shields.io/github/issues/emalherbi/MProgress.js.svg)]( https://github.com/emalherbi/mprogress.js/issues)
+[![Issues](http://img.shields.io/github/issues/emalherbi/MProgress.svg)]( https://github.com/emalherbi/mprogress/issues)
 
 Contributing
 -------
