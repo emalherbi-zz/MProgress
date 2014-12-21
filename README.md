@@ -5,7 +5,6 @@ Modal Progress Bar.
 
 <img src="https://raw.githubusercontent.com/emalherbi/MProgress/master/site/img/mprogress.png">
 
-
 Installation
 ------------
 
