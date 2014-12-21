@@ -5,12 +5,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
   // Load the plugin that concatenate files.
   grunt.loadNpmTasks('grunt-contrib-concat');
-  // Load the plugin that copy files and directories.
-  grunt.loadNpmTasks('grunt-contrib-copy');
 	// Load the plugin that minify and concatenate ".js" files.
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-  // Load the plugin that compress CSS files.
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
 	// Automatic notifications when tasks fail.
 	grunt.loadNpmTasks('grunt-notify');
 
@@ -34,23 +30,9 @@ module.exports = function(grunt) {
       },
       basic_and_extras: {
         files: {
-          'dist/js/mprogress.js': ['required/js/bootstrap.js', 'mprogress.js'],
-          'dist/css/mprogress.css': ['required/css/bootstrap.css', 'required/css/bootstrap-theme.css'],
+          'dist/mprogress.js': ['mprogress.js'],
         },
       },
-    },
-
-    /* put files not handled in other tasks here */
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'required',
-          src: ['**'],
-          dest: 'dist'
-        }]
-      }
     },
 
     /* js file minification */
@@ -59,18 +41,9 @@ module.exports = function(grunt) {
         preserveComments: false
       },
 			build: {
-				src: 'dist/js/mprogress.js',
-				dest: 'dist/js/mprogress.min.js'
+				src: 'dist/mprogress.js',
+				dest: 'dist/mprogress.min.js'
 			}
-    },
-
-    /* css file minification */
-    cssmin: {
-      combine: {
-        files: {
-          'dist/css/mprogress.min.css': ['dist/css/mprogress.css']
-        }
-      }
     }
 
 	});
@@ -79,8 +52,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
       'clean',
       'concat',
-      'uglify',
-      'cssmin'
+      'uglify'
   ]);
 
   grunt.registerTask('deploy', [

@@ -1,3 +1,8 @@
+/*!
+ * MProgress v1.0.0 (http://emalherbi.github.io/mprogress/)
+ * Copyright 2010-2014 emalherbi
+ * Licensed under MIT (http://en.wikipedia.org/wiki/MIT_License)
+ */
 ;(function(root, factory) {
 
   if (typeof define === 'function' && define.amd) {
