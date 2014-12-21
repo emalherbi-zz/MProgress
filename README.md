@@ -3,7 +3,7 @@ MProgress
 
 Modal Progress Bar.
 
-<img height="150" src="http://bower.io/img/bower-logo.png">
+<img src="https://raw.githubusercontent.com/emalherbi/MProgress/master/site/img/mprogress.png">
 
 
 Installation
