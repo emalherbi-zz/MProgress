@@ -7,7 +7,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
 	// Load the plugin that minify and concatenate ".js" files.
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	// Automatic notifications when tasks fail.
+  // Publish to GitHub Pages with Grunt
+  grunt.loadNpmTasks('grunt-gh-pages');
+  // Automatic notifications when tasks fail.
 	grunt.loadNpmTasks('grunt-notify');
 
   grunt.initConfig({
@@ -44,6 +46,15 @@ module.exports = function(grunt) {
 				src: 'dist/mprogress.js',
 				dest: 'dist/mprogress.min.js'
 			}
+    },
+
+    /* commit on gh-pages github */
+    'gh-pages': {
+      options: {
+        base: 'site/',
+        message: 'auto-generated commit'
+      },
+      src: ['**/*']
     }
 
 	});
@@ -52,7 +63,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
       'clean',
       'concat',
-      'uglify'
+      'uglify',
+      'gh-pages'
   ]);
 
   grunt.registerTask('deploy', [

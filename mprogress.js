@@ -14,10 +14,11 @@
   MProgress.name     = 'modal-mprogress';
   MProgress.version  = '0.1.0';
 
-  var Settings = MProgress.settings = {
-    title : 'Progress ...',
+  MProgress.handle   = null;
 
-    handle : null,
+  var Settings = MProgress.settings = {
+    title : 'MProgress ...',
+
     progress : 0,
 
     ariavaluemin : 0,
@@ -105,9 +106,9 @@
 
     window.setTimeout(function() {
       // reset the MProgress
-      $('#' + MProgress.name + ' .progress-bar').html(1 + '%');
-      $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', 1);
-      $('#' + MProgress.name + ' .progress-bar').css('width', 1 + '%');
+      $('#' + MProgress.name + ' .progress-bar').html(5 + '%');
+      $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', 5);
+      $('#' + MProgress.name + ' .progress-bar').css('width', 5 + '%');
 
       // hide the MProgress
       $('#' + MProgress.name ).modal('hide');
@@ -143,7 +144,7 @@
 
     MProgress.create();
     MProgress.settings.progress = Number( 0 );
-    MProgress.settings.handle = window.setInterval(function() {
+    MProgress.handle = window.setInterval(function() {
       MProgress.settings.progress += Number( 5 );
 
       if ( MProgress.settings.progress < MProgress.settings.ariavaluemax ) {
@@ -167,7 +168,7 @@
    *
    */
   MProgress.done = function() {
-    clearInterval( MProgress.settings.handle );
+    clearInterval( MProgress.handle );
 
     MProgress.dispatchEventDone();
     MProgress.hide();
