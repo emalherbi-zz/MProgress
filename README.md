@@ -1,4 +1,4 @@
-MProgress
+[MProgress](http://emalherbi.github.io/MProgress/)
 =========
 
 Modal Progress Bar.
@@ -8,7 +8,7 @@ Modal Progress Bar.
 Installation
 ------------
 
-Add [mprogress.js] to your project.
+Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/dist/mprogress.min.js) to your project.
 
 ```html
 <script src='mprogress.js' ></script>
