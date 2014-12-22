@@ -4,24 +4,28 @@ $( document ).ready(function() {
 
   $('#example1').click(function(e) {
     MProgress.configure({
-      title: 'Basic Usage...',
-      progressInc : 5,
-      progressUpdate : 1,
-      progressTimeout : 30
+      title: 'Basic usage...',
+      progressInc : 1,
+      progressUpdate : 0.1,
+      progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
     window.setTimeout(function() {
       MProgress.done();
-    }, 5000);
+    }, 8000);
   });
 
   $('#example2').click(function(e) {
     MProgress.configure({
-      title: 'Example Title...',
-      progressInc : 5,
-      progressUpdate : 1,
-      progressTimeout : 30
+      title: 'Title 12345...',
+      progressInc : 1,
+      progressUpdate : 0.1,
+      progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
@@ -32,10 +36,12 @@ $( document ).ready(function() {
 
   $('#example3').click(function(e) {
     MProgress.configure({
-      title: 'Example Inc...',
-      progressInc : 10,
-      progressUpdate : 1,
+      title: 'Inc 5 in progress...',
+      progressInc : 5,
+      progressUpdate : 0.1,
       progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
@@ -46,10 +52,12 @@ $( document ).ready(function() {
 
   $('#example4').click(function(e) {
     MProgress.configure({
-      title: 'Example Progress Update...',
+      title: 'Update progress in 3 seconds...',
       progressInc : 5,
       progressUpdate : 3,
       progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
@@ -60,10 +68,12 @@ $( document ).ready(function() {
 
   $('#example5').click(function(e) {
     MProgress.configure({
-      title: 'Example Timeout...',
-      progressInc : 5,
-      progressUpdate : 1,
+      title: 'Timeout in 30 seconds...',
+      progressInc : 1,
+      progressUpdate : 0.1,
       progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
@@ -71,16 +81,50 @@ $( document ).ready(function() {
 
   $('#example6').click(function(e) {
     MProgress.configure({
-      title: 'Example Add Event Done...',
-      progressInc : 5,
-      progressUpdate : 1,
+      title: 'Event done...',
+      progressInc : 1,
+      progressUpdate : 0.1,
       progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'info'
     });
 
     MProgress.start();
     MProgress.eventDone(function() {
       alert( 'Event Done !!!' );
     });
+    window.setTimeout(function() {
+      MProgress.done();
+    }, 5000);
+  });
+
+  $('#example7').click(function(e) {
+    MProgress.configure({
+      title: 'Using striped...',
+      progressInc : 1,
+      progressUpdate : 0.1,
+      progressTimeout : 30,
+      progressStriped : true,
+      progressClass : 'info'
+    });
+
+    MProgress.start();
+    window.setTimeout(function() {
+      MProgress.done();
+    }, 5000);
+  });
+
+  $('#example8').click(function(e) {
+    MProgress.configure({
+      title: 'Using class danger...',
+      progressInc : 1,
+      progressUpdate : 0.1,
+      progressTimeout : 30,
+      progressStriped : false,
+      progressClass : 'danger'
+    });
+
+    MProgress.start();
     window.setTimeout(function() {
       MProgress.done();
     }, 5000);
