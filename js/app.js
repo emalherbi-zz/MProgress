@@ -4,7 +4,10 @@ $( document ).ready(function() {
 
   $('#example1').click(function(e) {
     MProgress.configure({
-      title: 'Basic Usage...'
+      title: 'Basic Usage...',
+      progressInc : 5,
+      progressUpdate : 1,
+      progressTimeout : 30
     });
 
     MProgress.start();
@@ -15,7 +18,10 @@ $( document ).ready(function() {
 
   $('#example2').click(function(e) {
     MProgress.configure({
-      title: 'Example Title...'
+      title: 'Example Title...',
+      progressInc : 5,
+      progressUpdate : 1,
+      progressTimeout : 30
     });
 
     MProgress.start();
@@ -26,8 +32,24 @@ $( document ).ready(function() {
 
   $('#example3').click(function(e) {
     MProgress.configure({
+      title: 'Example Inc...',
       progressInc : 2,
-      title: 'Example Inc...'
+      progressUpdate : 1,
+      progressTimeout : 30,
+    });
+
+    MProgress.start();
+    window.setTimeout(function() {
+      MProgress.done();
+    }, 5000);
+  });
+
+  $('#example4').click(function(e) {
+    MProgress.configure({
+      title: 'Example Progress Update...',
+      progressInc : 5,
+      progressUpdate : 3,
+      progressTimeout : 30,
     });
 
     MProgress.start();
