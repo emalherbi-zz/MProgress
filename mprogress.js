@@ -41,15 +41,18 @@
       if ( value !== undefined && options.hasOwnProperty(key) ) {
         Settings[key] = value;
       }
-      if ( key === 'title' ) {
+      /*if ( key === 'title' ) {
         $('#' + MProgress.name + ' .modal-title').html( MProgress.settings.title );
       }
       if ( key === 'progressValue' ) {
         $('#' + MProgress.name ).attr('aria-valuenow', MProgress.settings.progressValue);
         $('#' + MProgress.name + ' .modal-body .progress-bar').html(MProgress.settings.progressValue + '%');
         $('#' + MProgress.name + ' .modal-body .progress-bar').css('width', MProgress.settings.progressValue + '%');
-      }
+      }*/
     }
+    
+    // update template
+    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressValue + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressValue + '%"> ' + MProgress.settings.progressValue + '%</div></div></div></div></div></div>';
 
     return this;
   };
