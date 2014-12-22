@@ -50,23 +50,41 @@ MProgress.done();
 </code></pre>
 
 <h3>
-  <a id="change-title" class="anchor" href="#change-title" aria-hidden="true">
+  <a id="title" class="anchor" href="#title" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Change Title <a id="example2" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  Title <a id="example2" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
-<pre><code>MProgress.start();
-MProgress.configure({
-  title: 'Example 2...'
+<pre><code>MProgress.configure({
+  title: 'Example Title...'
 });
 
+MProgress.start();
 window.setTimeout(function() {
   MProgress.done();
 }, 5000);
 </code></pre>
 
-      </section>
+<h3>
+  <a id="inc" class="anchor" href="#inc" aria-hidden="true">
+    <span class="octicon octicon-link"></span>
+  </a>
+  Inc <a id="example3" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+</h3>
+
+<pre><code>MProgress.configure({
+  progressInc : 2,
+  title: 'Example Inc...'
+});
+
+MProgress.start();
+window.setTimeout(function() {
+  MProgress.done();
+}, 5000);
+</code></pre>
+
+</section>
 
       <footer>
         Mprogress is maintained by <a href="https://github.com/emalherbi">emalherbi</a><br>
