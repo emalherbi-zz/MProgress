@@ -1,5 +1,5 @@
 [MProgress](http://emalherbi.github.io/MProgress/)
-=========
+=======
 
 Modal Progress Bar.
 
@@ -9,7 +9,7 @@ Modal Progress Bar.
 `ajaxStop` events.
 
 Installation
-------------
+-------
 
 Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/dist/mprogress.min.js) to your project.
 
@@ -18,7 +18,7 @@ Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/
 ```
 
 Documentation
-------------
+-------
 
 MProgress documentation, included in this repo in the site directory, is publicly hosted on GitHub Pages at [http://emalherbi.github.io/MProgress](http://emalherbi.github.io/MProgress).
 
