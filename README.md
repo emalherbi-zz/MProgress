@@ -3,7 +3,7 @@
 
 Modal Progress Bar.
 
-<img src="https://raw.githubusercontent.com/emalherbi/MProgress/master/site/img/mprogress.png">
+<img src="https://raw.githubusercontent.com/emalherbi/MProgress/master/docs/img/mprogress.png">
 
 * Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
 `ajaxStop` events.
