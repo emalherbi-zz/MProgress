@@ -49,6 +49,11 @@
       if ( key === 'title' ) {
         $('#' + MProgress.name + ' .modal-title').html( MProgress.settings.title );
       }
+      if ( key === 'progressValue' ) {
+        $('#' + MProgress.name ).attr('aria-valuenow', MProgress.settings.progressValue);
+        $('#' + MProgress.name + ' .modal-body .progress-bar').html(MProgress.settings.progressValue + '%');
+        $('#' + MProgress.name + ' .modal-body .progress-bar').css('width', MProgress.settings.progressValue + '%');
+      }
     }
 
     return this;
