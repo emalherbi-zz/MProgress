@@ -5,6 +5,9 @@ Modal Progress Bar.
 
 <img src="https://raw.githubusercontent.com/emalherbi/MProgress/master/site/img/mprogress.png">
 
+* Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
+`ajaxStop` events.
+
 Installation
 ------------
 
@@ -14,11 +17,10 @@ Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/
 <script src='mprogress.js' ></script>
 ```
 
-Ideas
------
+Documentation
+------------
 
-* Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
-`ajaxStop` events.
+MProgress documentation, included in this repo in the site directory, is publicly hosted on GitHub Pages at [http://emalherbi.github.io/MProgress](http://emalherbi.github.io/MProgress).
 
 Support
 -------
