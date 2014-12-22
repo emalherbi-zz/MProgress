@@ -14,31 +14,11 @@ Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/
 <script src='mprogress.js' ></script>
 ```
 
-Basic usage
------------
-
-Simply call `start()` and `done()` to control the progress bar.
-
-~~~ js
-MProgress.start();
-MProgress.done();
-~~~
-
 Ideas
 -----
 
 * Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
 `ajaxStop` events.
-
-Configuration
--------------
-
-#### `title`
-Changes the modal title.
-
-~~~ js
-MProgress.configure({ title: 'Modal Title !!!' });
-~~~
 
 Support
 -------
