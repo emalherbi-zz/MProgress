@@ -20,11 +20,11 @@
 
   var Settings = MProgress.settings = {
     title : 'MProgress ...',
-    progressValue : 5,
-    seconds : 1,
-    secondsTimeout : 30,
+    progressInc : 5,
+    progressUpdate : 1,
+    progressTimeout : 30,
   };
-  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressValue + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressValue + '%"> ' + MProgress.settings.progressValue + '%</div></div></div></div></div></div>';
+  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
 
   /**
    * Updates configuration.
@@ -44,7 +44,7 @@
     }
 
     // update template
-    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressValue + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressValue + '%"> ' + MProgress.settings.progressValue + '%</div></div></div></div></div></div>';
+    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
 
     return this;
   };
@@ -140,9 +140,9 @@
     $('#' + MProgress.name).off('EVENT_MPROGRESS_DONE');
 
     MProgress.create();
-    MProgress.progress = Number( MProgress.settings.progressValue );
+    MProgress.progress = Number( MProgress.settings.progressInc );
     MProgress.handle = window.setInterval(function() {
-      MProgress.progress += Number( MProgress.settings.progressValue );
+      MProgress.progress += Number( MProgress.settings.progressInc );
 
       if ( MProgress.progress < MProgress.valuemax ) {
         $('#' + MProgress.name + ' .progress-bar').html(MProgress.progress + '%');
@@ -150,12 +150,12 @@
         $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.progress + '%');
       }
 
-      if ( i > (MProgress.settings.secondsTimeout / MProgress.settings.seconds) ) {
+      if ( i > (MProgress.settings.progressTimeout / MProgress.settings.progressUpdate) ) {
         MProgress.done();
       }
 
       i++; // console.log( i );
-    }, (MProgress.settings.seconds * 1000) );
+    }, (MProgress.settings.progressUpdate * 1000) );
   };
 
   /**
