@@ -20,7 +20,7 @@ Add [mprogress.js](https://raw.githubusercontent.com/emalherbi/MProgress/master/
 Documentation
 -------
 
-MProgress documentation, included in this repo in the site directory, is publicly hosted on GitHub Pages at [http://emalherbi.github.io/MProgress](http://emalherbi.github.io/MProgress).
+MProgress documentation, included in this repo in the docs directory, is publicly hosted on GitHub Pages at [http://emalherbi.github.io/MProgress](http://emalherbi.github.io/MProgress).
 
 Support
 -------

@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       },
       basic_and_extras: {
         files: {
-          'dist/mprogress.js': ['mprogress.js'],
+          'dist/<%= pkg.name %>.js': ['<%= pkg.name %>.js'],
         },
       },
     },
@@ -43,15 +43,15 @@ module.exports = function(grunt) {
         preserveComments: false
       },
 			build: {
-				src: 'dist/mprogress.js',
-				dest: 'dist/mprogress.min.js'
+				src: 'dist/<%= pkg.name %>.js',
+				dest: 'dist/<%= pkg.name %>.min.js'
 			}
     },
 
     /* commit on gh-pages github */
     'gh-pages': {
       options: {
-        base: 'site/',
+        base: 'docs/',
         message: 'auto-generated commit'
       },
       src: ['**/*']

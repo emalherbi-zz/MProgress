@@ -58,7 +58,6 @@
   MProgress.eventDone = function( callback ) {
     // get Event when done the process
     $('#' + MProgress.name).off('EVENT_MPROGRESS_DONE').on('EVENT_MPROGRESS_DONE', function( event ) {
-      console.log( 'EVENT_MPROGRESS_DONE' );
       return callback();
     });
   };
@@ -109,12 +108,6 @@
 
       // hide the MProgress
       $('#' + MProgress.name ).modal('hide');
-
-      // dispatch event done
-      MProgress.dispatchEventDone();
-
-      // destroy the MProgress
-      MProgress.destroy();
     }, 1000);
   };
 
@@ -129,6 +122,10 @@
       $('html body').append( MProgress.template );
     }
 
+    // destroy the MProgress
+    MProgress.destroy();
+
+    // show the MProgress
     MProgress.show();
   };
 
@@ -139,7 +136,12 @@
   *
   */
   MProgress.destroy = function() {
-    $('#' + MProgress.name).remove();
+    $('#' + MProgress.name).on('hidden.bs.modal', function () {
+      // dispatch event done
+      MProgress.dispatchEventDone();
+
+      $(this).remove();
+    });
   };
 
   /**
@@ -169,7 +171,7 @@
         MProgress.done();
       }
 
-      i++; // console.log( i );
+      i++; 
     }, (MProgress.settings.progressUpdate * 1000) );
   };
 

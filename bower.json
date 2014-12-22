@@ -1,5 +1,5 @@
 {
-  "name": "MProgress",
+  "name": "mprogress",
   "version": "1.0.0",
   "description": "Modal Progress Bar!",
   "main": "mprogress.js",
