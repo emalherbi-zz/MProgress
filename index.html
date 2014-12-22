@@ -75,7 +75,7 @@ window.setTimeout(function() {
 
 <pre><code>MProgress.configure({
   title: 'Example Inc...',
-  progressInc : 2
+  progressInc : 10
 });
 
 MProgress.start();
@@ -93,10 +93,47 @@ window.setTimeout(function() {
 
 <pre><code>MProgress.configure({
   title: 'Example Progress Update...',
-  progressUpdate : 3
+  progressUpdate : 3 // 3 seconds
 });
 
 MProgress.start();
+window.setTimeout(function() {
+  MProgress.done();
+}, 10000);
+</code></pre>
+
+<h3>
+  <a id="timeout" class="anchor" href="#timeout" aria-hidden="true">
+    <span class="octicon octicon-link"></span>
+  </a>
+  Timeout Progress (30 seconds) <a id="example5" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+</h3>
+
+<pre><code>MProgress.configure({
+  title: 'Example Timeout...',
+  progressTimeout : 30
+});
+
+MProgress.start();
+</code></pre>
+
+<h3>
+  <a id="event-done" class="anchor" href="#event-done" aria-hidden="true">
+    <span class="octicon octicon-link"></span>
+  </a>
+  Add Event Done <a id="example6" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+</h3>
+
+<pre><code>MProgress.configure({
+  title: 'Example Add Event Done...'
+});
+
+MProgress.start();
+
+MProgress.eventDone(function() {
+  alert( 'Event Done !!!' );
+});
+
 window.setTimeout(function() {
   MProgress.done();
 }, 5000);
