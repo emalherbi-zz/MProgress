@@ -85,4 +85,18 @@ $( document ).ready(function() {
       MProgress.done();
     }, 5000);
   });
+
+  $('#example7').click(function(e) {
+    MProgress.configure({
+      title: 'Update Progress + Inc (Faster)...',
+      progressInc : 1,
+      progressUpdate : 0.1,
+      progressTimeout : 30
+    });
+
+    MProgress.start();
+    window.setTimeout(function() {
+      MProgress.done();
+    }, 10000);
+  });
 });

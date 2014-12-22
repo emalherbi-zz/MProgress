@@ -139,6 +139,26 @@ window.setTimeout(function() {
 }, 5000);
 </code></pre>
 
+<h3>
+  <a id="faster" class="anchor" href="#faster" aria-hidden="true">
+    <span class="octicon octicon-link"></span>
+  </a>
+  Faster <a id="example7" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+</h3>
+
+<pre><code>MProgress.configure({
+  title: 'Update Progress + Inc (Faster)...',
+  progressInc : 1,
+  progressUpdate : 0.1,
+  progressTimeout : 30
+});
+
+MProgress.start();
+window.setTimeout(function() {
+  MProgress.done();
+}, 10000);
+</code></pre>
+
 </section>
 
       <footer>
@@ -150,9 +170,9 @@ window.setTimeout(function() {
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js" ></script>
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" ></script>
-  <!-- <script type="text/javascript" src="../mprogress.js" ></script> -->
-  <script type="text/javascript" src="https://raw.githubusercontent.com/emalherbi/MProgress/master/mprogress.js" ></script>
+  <script type="text/javascript" src="../mprogress.js" ></script>
+  <!-- <script type="text/javascript" src="https://raw.githubusercontent.com/emalherbi/MProgress/master/mprogress.js" ></script> -->
   <script type="text/javascript" src="js/app.js" ></script>
-  
+
 </body>
 </html>
