@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
   $('#example2').click(function(e) {
     MProgress.configure({
-      title: 'Example 2...'
+      title: 'Example Title...'
     });
 
     MProgress.start();
