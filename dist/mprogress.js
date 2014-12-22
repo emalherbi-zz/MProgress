@@ -25,11 +25,15 @@
 
   var Settings = MProgress.settings = {
     title : 'MProgress ...',
-    progressInc : 5,
-    progressUpdate : 1,
-    progressTimeout : 30,
+    progressInc : 1,
+    progressUpdate : 0.1,
+    progressTimeout : 50,
+    progressStriped : false,
+    progressClass : 'info' // ['info', 'success', 'warning', 'danger'],
   };
-  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
+  MProgress.class    = MProgress.settings.progressClass;
+  MProgress.striped  = (Boolean(MProgress.settings.progressStriped)) ? 'progress-bar-striped' : '';
+  MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-' + MProgress.class + ' ' + MProgress.striped + ' active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
 
   /**
    * Updates configuration.
@@ -49,7 +53,9 @@
     }
 
     // update template
-    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
+    MProgress.class    = MProgress.settings.progressClass;
+    MProgress.striped  = (Boolean(MProgress.settings.progressStriped)) ? 'progress-bar-striped' : '';
+    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-' + MProgress.class + ' ' + MProgress.striped + ' active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
 
     return this;
   };
@@ -97,19 +103,15 @@
    */
   MProgress.hide = function() {
     // update the MProgress process
-    var i, len;
-    for (i=MProgress.progress, len=MProgress.valuemax; i<=len; i++) {
-      $('#' + MProgress.name + ' .progress-bar').html(i + '%');
-      $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', i);
-      $('#' + MProgress.name + ' .progress-bar').css('width', i + '%');
-    }
-    MProgress.progress = i;
+    $('#' + MProgress.name + ' .progress-bar').html(MProgress.valuemax + '%');
+    $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.valuemax);
+    $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.valuemax + '%');
 
     window.setTimeout(function() {
       // reset the MProgress
-      $('#' + MProgress.name + ' .progress-bar').html(5 + '%');
-      $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', 5);
-      $('#' + MProgress.name + ' .progress-bar').css('width', 5 + '%');
+      $('#' + MProgress.name + ' .progress-bar').html(MProgress.settings.progressInc + '%');
+      $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.settings.progressInc);
+      $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.settings.progressInc + '%');
 
       // hide the MProgress
       $('#' + MProgress.name ).modal('hide');
@@ -167,7 +169,7 @@
       MProgress.progress += Number( MProgress.settings.progressInc );
 
       if ( MProgress.progress < MProgress.valuemax ) {
-        $('#' + MProgress.name + ' .progress-bar').html(MProgress.progress + '%');
+        $('#' + MProgress.name + ' .progress-bar').html( (MProgress.progress).toFixed(0) + '%');
         $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.progresss);
         $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.progress + '%');
       }
@@ -176,7 +178,7 @@
         MProgress.done();
       }
 
-      i++; 
+      i++; // console.log( i );
     }, (MProgress.settings.progressUpdate * 1000) );
   };
 

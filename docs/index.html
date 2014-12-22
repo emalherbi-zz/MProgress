@@ -53,11 +53,11 @@ MProgress.done();
   <a id="title" class="anchor" href="#title" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Title <a id="example2" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  Change 'Title' <a id="example2" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Example Title...'
+  title: 'Title 12345...'
 });
 
 MProgress.start();
@@ -70,12 +70,12 @@ window.setTimeout(function() {
   <a id="inc" class="anchor" href="#inc" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Inc <a id="example3" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  'Inc' 5 in progress <a id="example3" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Example Inc...',
-  progressInc : 10
+  title: 'Inc 5 in progress...',
+  progressInc : 5
 });
 
 MProgress.start();
@@ -88,12 +88,13 @@ window.setTimeout(function() {
   <a id="update" class="anchor" href="#update" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Update Progress (3 seconds) <a id="example4" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  'Update' progress in 3 seconds <a id="example4" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Example Progress Update...',
-  progressUpdate : 3 // 3 seconds
+  title: 'Update progress in 3 seconds...',
+  progressInc : 5,
+  progressUpdate : 3
 });
 
 MProgress.start();
@@ -106,11 +107,11 @@ window.setTimeout(function() {
   <a id="timeout" class="anchor" href="#timeout" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Timeout Progress (30 seconds) <a id="example5" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  'Timeout' in 30 seconds <a id="example5" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Example Timeout...',
+  title: 'Timeout in 30 seconds...',
   progressTimeout : 30
 });
 
@@ -121,11 +122,11 @@ MProgress.start();
   <a id="event-done" class="anchor" href="#event-done" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Add Event Done <a id="example6" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  Event 'Done' <a id="example6" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Example Add Event Done...'
+  title: 'Event Done...'
 });
 
 MProgress.start();
@@ -140,23 +141,37 @@ window.setTimeout(function() {
 </code></pre>
 
 <h3>
-  <a id="faster" class="anchor" href="#faster" aria-hidden="true">
+  <a id="css-striped" class="anchor" href="#css-striped" aria-hidden="true">
     <span class="octicon octicon-link"></span>
   </a>
-  Faster <a id="example7" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+  Using striped <a id="example7" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
 </h3>
 
 <pre><code>MProgress.configure({
-  title: 'Update Progress + Inc (Faster)...',
-  progressInc : 1,
-  progressUpdate : 0.1,
-  progressTimeout : 30
+  progressStriped : true
 });
 
 MProgress.start();
 window.setTimeout(function() {
   MProgress.done();
-}, 10000);
+}, 5000);
+</code></pre>
+
+<h3>
+  <a id="css-class" class="anchor" href="#css-class" aria-hidden="true">
+    <span class="octicon octicon-link"></span>
+  </a>
+  Using Class 'info', 'success', 'danger', 'warning' <a id="example8" class="btn btn-success" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a>
+</h3>
+
+<pre><code>MProgress.configure({
+  progressClass : 'danger'
+});
+
+MProgress.start();
+window.setTimeout(function() {
+  MProgress.done();
+}, 5000);
 </code></pre>
 
 </section>
@@ -170,8 +185,8 @@ window.setTimeout(function() {
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js" ></script>
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" ></script>
-  <script type="text/javascript" src="../mprogress.js" ></script>
-  <!-- <script type="text/javascript" src="https://raw.githubusercontent.com/emalherbi/MProgress/master/mprogress.js" ></script> -->
+  <!-- <script type="text/javascript" src="../mprogress.js" ></script> -->
+  <script type="text/javascript" src="https://raw.githubusercontent.com/emalherbi/MProgress/master/mprogress.js" ></script>
   <script type="text/javascript" src="js/app.js" ></script>
 
 </body>
