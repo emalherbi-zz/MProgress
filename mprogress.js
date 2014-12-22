@@ -44,7 +44,6 @@
     }
 
     // update template
-    $('#' + MProgress.name).remove();
     MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
 
     return this;
@@ -110,6 +109,12 @@
 
       // hide the MProgress
       $('#' + MProgress.name ).modal('hide');
+
+      // dispatch event done
+      MProgress.dispatchEventDone();
+
+      // destroy the MProgress
+      MProgress.destroy();
     }, 1000);
   };
 
@@ -127,6 +132,15 @@
     MProgress.show();
   };
 
+  /**
+  * Destroy the progress bar.
+  *
+  *  MProgress.destroy();
+  *
+  */
+  MProgress.destroy = function() {
+    $('#' + MProgress.name).remove();
+  };
 
   /**
    * Start the progress bar.
@@ -167,8 +181,6 @@
    */
   MProgress.done = function() {
     clearInterval( MProgress.handle );
-
-    MProgress.dispatchEventDone();
     MProgress.hide();
   };
 
