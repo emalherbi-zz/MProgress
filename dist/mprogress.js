@@ -17,7 +17,7 @@
   var MProgress = {};
 
   MProgress.name     = 'modal-mprogress';
-  MProgress.version  = '0.1.0';
+  MProgress.version  = '2.0.2';
   MProgress.handle   = null;
   MProgress.progress = 0;
   MProgress.valuemin = 0;
