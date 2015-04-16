@@ -1,6 +1,6 @@
 /*!
  * mprogress v1.0.0 (http://emalherbi.github.io/mprogress/)
- * Copyright 2010-2014 emalherbi
+ * Copyright 2010-2015 emalherbi
  * Licensed under MIT (http://en.wikipedia.org/wiki/MIT_License)
  */
 ;(function(root, factory) {
@@ -27,7 +27,6 @@
     title : 'MProgress ...',
     progressInc : 1,
     progressUpdate : 0.1,
-    progressTimeout : 50,
     progressStriped : false,
     progressClass : 'info' // ['info', 'success', 'warning', 'danger'],
   };
@@ -61,37 +60,13 @@
   };
 
   /**
-   * Add Event Done the progress bar.
-   *
-   *   MProgress.addEventDone();
-   *
-   */
-  MProgress.eventDone = function( callback ) {
-    // get Event when done the process
-    $('#' + MProgress.name).off('EVENT_MPROGRESS_DONE').on('EVENT_MPROGRESS_DONE', function( event ) {
-      return callback();
-    });
-  };
-
-  /**
-   * Dispatch Event Done the progress bar.
-   *
-   *   MProgress.dispatchEventDone();
-   *
-   */
-  MProgress.dispatchEventDone = function() {
-    // dispatch Event when done the process
-    $('#' + MProgress.name).trigger( "EVENT_MPROGRESS_DONE" );
-  };
-
-  /**
    * Shows the progress bar.
    *
    *  MProgress.show();
    *
    */
   MProgress.show = function() {
-    // show a modal, STATIC
+    // show a modal, static
     $('#' + MProgress.name ).modal({ "backdrop" : "static", "keyboard" : false, "show" : true });
   };
 
@@ -144,9 +119,6 @@
   */
   MProgress.destroy = function() {
     $('#' + MProgress.name).on('hidden.bs.modal', function () {
-      // dispatch event done
-      MProgress.dispatchEventDone();
-
       $(this).remove();
     });
   };
@@ -158,27 +130,16 @@
    *
    */
   MProgress.start = function() {
-    var i = 0;
-
-    // clear event DONE if in memory
-    $('#' + MProgress.name).off('EVENT_MPROGRESS_DONE');
-
     MProgress.create();
     MProgress.progress = Number( MProgress.settings.progressInc );
     MProgress.handle = window.setInterval(function() {
       MProgress.progress += Number( MProgress.settings.progressInc );
 
       if ( MProgress.progress < MProgress.valuemax ) {
-        $('#' + MProgress.name + ' .progress-bar').html( (MProgress.progress).toFixed(0) + '%');
+        $('#' + MProgress.name + ' .progress-bar').html((MProgress.progress).toFixed(0) + '%');
         $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.progresss);
         $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.progress + '%');
       }
-
-      if ( i > (MProgress.settings.progressTimeout / MProgress.settings.progressUpdate) ) {
-        MProgress.done();
-      }
-
-      i++; // console.log( i );
     }, (MProgress.settings.progressUpdate * 1000) );
   };
 
