@@ -22,8 +22,8 @@
     <div class="inner">
 
       <header>
-        <h1>MProgress</h1>
-        <h2>Modal Progress Bar!</h2>
+        <h1>MProgress.js</h1>
+        <h2>Modal progress bar for bootstrap! Featuring realistic trickle animations to convince your users that something is happening!</h2>
       </header>
 
       <section id="downloads" class="clearfix">
@@ -36,24 +36,21 @@
 
       <section id="main_content">
 
-<h3>
-  <a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true">
-    <span class="octicon octicon-link"></span>
-  </a>
-  Basic usage
-</h3>
-<hr>
-<p><a id="btnStart" class="btn btn-default" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a> MProgress.start()</p>
+        <p>MProgress.start() — shows the modal progress bar</p>
+        <p>MProgress.done() — completes the progress</p>
 
-<h3>
-  <a id="title" class="anchor" href="#title" aria-hidden="true">
-    <span class="octicon octicon-link"></span>
-  </a>
-  Change 'title', 'progressInc', 'progressUpdate', 'progressStriped', 'progressClass'
-</h3>
-<hr>
-<p>
-<a id="example2" class="btn btn-default" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a> Example 2</p>
+        <hr>
+
+        <h3>Example 1 <a id="example1" class="btn btn-default" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a></h3>
+
+<pre><code>MProgress.start();
+
+window.setTimeout(function() {
+  MProgress.done();
+}, 5000);
+</code></pre>
+
+        <h3>Example 2 <a id="example2" class="btn btn-default" href="javascript:void(0)"><i class="fa fa-play fa-lg"></i></a></h3>
 
 <pre><code>MProgress.configure({
   title: 'Hello World!',
@@ -65,7 +62,7 @@
 
 window.setTimeout(function() {
   MProgress.done();
-}, 60000);
+}, 5000);
 </code></pre>
 
 </section>
