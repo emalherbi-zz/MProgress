@@ -18,8 +18,9 @@
   MProgress.valuemin = 0;
   MProgress.valuemax = 100;
 
-  var Settings = MProgress.settings = {
-    title : 'MProgress ...',
+  var Settings = {};
+  var SettingsDefault = MProgress.settings = {
+    title : 'Processing...',
     progressInc : 1,
     progressUpdate : 0.1,
     progressStriped : false,
@@ -37,19 +38,26 @@
    *  });
    */
   MProgress.configure = function(options) {
+    $.extend(Settings, SettingsDefault); // init Settings to default configuration
+
     var key, value;
     for (key in options) {
       value = options[ key ];
 
-      if ( value !== undefined && options.hasOwnProperty(key) ) {
+      if (value && Settings.hasOwnProperty(key)) {
         Settings[key] = value;
       }
     }
 
     // update template
-    MProgress.class    = MProgress.settings.progressClass;
-    MProgress.striped  = (Boolean(MProgress.settings.progressStriped)) ? 'progress-bar-striped' : '';
-    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + MProgress.settings.title + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-' + MProgress.class + ' ' + MProgress.striped + ' active" role="progressbar" aria-valuenow="' + MProgress.settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + MProgress.settings.progressInc + '%"> ' + MProgress.settings.progressInc + '%</div></div></div></div></div></div>';
+    MProgress.class    = Settings.progressClass;
+    MProgress.striped  = (Boolean(Settings.progressStriped)) ? 'progress-bar-striped' : '';
+    MProgress.template = '<div id="' + MProgress.name + '" class="modal fade" ><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">' + Settings.title  + '</h4></div><div class="modal-body"><div class="progress"><div class="progress-bar progress-bar-' + MProgress.class + ' ' + MProgress.striped + ' active" role="progressbar" aria-valuenow="' + Settings.progressInc + '" aria-valuemin="' + MProgress.valuemin + '" aria-valuemax="' + MProgress.valuemax + '" style="width: ' + Settings.progressInc + '%"> ' + Settings.progressInc + '%</div></div></div></div></div></div>';
+
+    // update title if template exist
+    if ($('#modal-mprogress').length) {
+      $('#modal-mprogress .modal-title').text(Settings.title);
+    }
 
     return this;
   };
@@ -83,6 +91,9 @@
       $('#' + MProgress.name + ' .progress-bar').attr('aria-valuenow', MProgress.settings.progressInc);
       $('#' + MProgress.name + ' .progress-bar').css('width', MProgress.settings.progressInc + '%');
 
+      // configure default for restart the plugin
+      MProgress.configure();
+
       // hide the MProgress
       $('#' + MProgress.name ).modal('hide');
     }, 1000);
@@ -95,14 +106,15 @@
    *
    */
   MProgress.create = function() {
+    // append on html
     if ( $('#' + MProgress.name ).length == 0 ) {
       $('html body').append( MProgress.template );
     }
 
-    // destroy the MProgress
+    // destroy the modal if exist MProgress
     MProgress.destroy();
 
-    // show the MProgress
+    // show the modal MProgress
     MProgress.show();
   };
 

@@ -79,12 +79,12 @@ module.exports = function(grunt) {
     'clean',
     'concat',
     'uglify',
-    'copy',
-    'gh-pages'
+    'copy'
   ]);
 
   grunt.registerTask('deploy', [
-    'build'
+    'build',
+    'gh-pages'
   ]);
 
   grunt.registerTask('default', [

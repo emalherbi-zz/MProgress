@@ -1,7 +1,7 @@
 {
   "name": "mprogress",
-  "version": "1.0.0",
-  "description": "Modal Progress Bar!",
+  "version": "2.0.5",
+  "description": "Modal progress bar for bootstrap!",
   "main": "mprogress.js",
   "homepage": "http://emalherbi.github.io/mprogress/",
   "author": "emalherbi",
