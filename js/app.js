@@ -1,15 +1,17 @@
 $( document ).ready(function() {
   console.log( "ready!" );
 
-  $('#btnStart').click(function(e) {
-    MProgress.configure({
-      title: 'Basic usage... <a class="btn btn-default" href="javascript:void(0)" onclick="MProgress.done()" ><i class="fa fa-play fa-lg"></i></a> MProgress.done() ',
-    }).start();
+  $('#example1').click(function(e) {
+    MProgress.start();
+
+    window.setTimeout(function() {
+      MProgress.done();
+    }, 5000);
   });
 
   $('#example2').click(function(e) {
     MProgress.configure({
-      title: 'Hello World! <a class="btn btn-default" href="javascript:void(0)" onclick="MProgress.done()" ><i class="fa fa-play fa-lg"></i></a> MProgress.done()',
+      title: 'Hello World!',
       progressInc : 1,
       progressUpdate : 0.1,
       progressStriped : true,
@@ -18,6 +20,6 @@ $( document ).ready(function() {
 
     window.setTimeout(function() {
       MProgress.done();
-    }, 60000);
+    }, 5000);
   });
 });
